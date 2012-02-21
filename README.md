@@ -1,7 +1,7 @@
 # Heroku Buildpak: Go
 
 This is a [Heroku buildpack][buildpack] for Go apps. It
-uses [goinstall][]. This repository is useful if you
+uses the [go command][]. This repository is useful if you
 want to inspect or change the behavior of the buildpack
 itself. See the [Go Buildpack Quickstart][quickstart]
 for a gentle introduction suitable for Heroku users.
@@ -11,26 +11,30 @@ for a gentle introduction suitable for Heroku users.
 Example usage for an app already stored in git:
 
     $ find . -type f -print
-    ./.gitignore
     ./Procfile
-    ./src/hello/app.go
-
-    $ heroku create -s cedar --buildpack http://github.com/kr/heroku-buildpack-go.git
+    ./src/app/app.go
+    ./src/hello/hello.go
     ...
 
-    $ git push heroku master
+    $ heroku create -s cedar --buildpack http://github.com/zeebo/heroku-buildpack-go.git
+    ...
+
+    polarna:heroku_test zeebo$ git push heroku master
     ...
     -----> Heroku receiving push
+    -----> Fetching custom buildpack... done
     -----> Go app detected
-    -----> Using Go version release.r60.2
-    -----> Go version release.r60.2 cached; Skipping clone
-    -----> Go version release.r60.2 build; Skipping build
-    -----> Running goinstall
+    -----> Using Go weekly.2012-02-07
+    -----> Running go get -v all
+    github.com/zeebo/bencode (download)
+    github.com/zeebo/bencode
+    hello
+    app
     -----> Discovering process types
            Procfile declares types -> web
-    -----> Compiled slug size is 912K
-    -----> Launching... done, v1
-    http://pure-sunrise-3607.herokuapp.com deployed to Heroku
+    -----> Compiled slug size is 1.0MB
+    -----> Launching... done, v18
+           http://growing-lightning-4944.herokuapp.com deployed to Heroku
 
 The buildpack will detect your app as Go if it has a
 `.go` file in the `src` directory, or any subdirectory.
@@ -44,8 +48,6 @@ already have an existing app you may use `heroku config
 add BUILDPACK_URL=YOUR_GITHUB_URL` instead of
 `--buildpack`.
 
-(example forthcoming)
-
 [buildpack]: http://devcenter.heroku.com/articles/buildpack
-[goinstall]: http://golang.org/cmd/goinstall/
-[quickstart]: https://gist.github.com/299535bbf56bf3016cba
+[goinstall]: http://weekly.golang.org/cmd/go/
+[quickstart]: https://gist.github.com/4f3e55309f330efa83af

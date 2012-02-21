@@ -39,9 +39,9 @@ mkdir -p $GOPATH
 cp -R $build/src $GOPATH
 
 unset GIT_DIR # unset git dir or it will mess with go get
-echo "-----> Running go get"
+echo "-----> Running go get -v all"
 cd $GOPATH
-$GOROOT/bin/go get -v ...
+$GOROOT/bin/go get -v all
 
 mkdir -p $build/bin
 mv $GOPATH/bin/* $build/bin
