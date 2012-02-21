@@ -49,5 +49,5 @@ add BUILDPACK_URL=YOUR_GITHUB_URL` instead of
 `--buildpack`.
 
 [buildpack]: http://devcenter.heroku.com/articles/buildpack
-[goinstall]: http://weekly.golang.org/cmd/go/
+[go command]: http://weekly.golang.org/cmd/go/
 [quickstart]: https://gist.github.com/4f3e55309f330efa83af
