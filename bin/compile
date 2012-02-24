@@ -7,7 +7,7 @@ mkdir -p "$1" "$2"
 
 build=$(cd "$1/" && pwd)
 cache=$(cd "$2/" && pwd)
-ver=weekly.2012-02-07
+ver=weekly.2012-02-22
 if test -f $build/hack-goversion
 then ver=$(cat $build/hack-goversion)
 fi
