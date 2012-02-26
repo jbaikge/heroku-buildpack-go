@@ -48,6 +48,12 @@ already have an existing app you may use `heroku config
 add BUILDPACK_URL=YOUR_GITHUB_URL` instead of
 `--buildpack`.
 
+## Credits
+
+A lot of the work was done by [kr][kr]. I just took what he did, cleaned it up
+and made it work with the new go tool in preparation for Go 1.
+
 [buildpack]: http://devcenter.heroku.com/articles/buildpack
 [go command]: http://weekly.golang.org/cmd/go/
 [quickstart]: https://gist.github.com/4f3e55309f330efa83af
+[kr]: https://github.com/kr/heroku-buildpack-go
