@@ -7,14 +7,15 @@ mkdir -p "$1" "$2"
 
 build=$(cd "$1/" && pwd)
 cache=$(cd "$2/" && pwd)
-ver=weekly.2012-02-22
-if test -f $build/hack-goversion
-then ver=$(cat $build/hack-goversion)
+if [ -f $build/hack-goversion ]; then
+    ver=$(cat $build/hack-goversion)
+    pkg_path=go.weekly.$ver.linux-amd64
+else
+    pkg_path=$(curl -s http://code.google.com/p/go/downloads/list | grep -o go.weekly.....-..-...linux-amd64 | head -n1)
 fi
 
-pkg_path=go.$ver.linux-amd64
 
-echo "-----> Using Go $ver"
+echo "-----> Using Go $pkg_path"
 
 (
     set -e
@@ -25,7 +26,7 @@ echo "-----> Using Go $ver"
     rm -rf $cache/* # be sure not to build up cruft
     mkdir -p $cache/$pkg_path
     cd $cache/$pkg_path
-    echo "-----> Fetching Go $ver"
+    echo "-----> Fetching Go $pkg_path"
     url=http://go.googlecode.com/files/$pkg_path.tar.gz
     curl -sO $url
     tar zxf $pkg_path.tar.gz
